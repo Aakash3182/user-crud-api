@@ -25,6 +25,10 @@ app.get('/', async (req, res) => {
 // Routes
 app.use('/api', userRoutes);
 
+app.all('*', (req, res) => {
+    res.status(StatusCodes.NOT_FOUND).json({ msg: `Can't find ${req.originalUrl} on this server` });
+});
+
 // Server listener
 app.listen(PORT, () => {
     connectDB().then(() => {
