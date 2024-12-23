@@ -24,7 +24,7 @@ app.get('/', async (req, res) => {
 
 // Routes
 app.use('/api', userRoutes);
-
+// default route
 app.all('*', (req, res) => {
     res.status(StatusCodes.NOT_FOUND).json({ msg: `Can't find ${req.originalUrl} on this server` });
 });
